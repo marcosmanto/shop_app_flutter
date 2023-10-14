@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: Color.fromRGBO(254, 206, 1, 1),
           primary: Color.fromRGBO(254, 206, 1, 1),
+          secondary: Color.fromRGBO(216, 240, 253, 1),
         ),
         inputDecorationTheme: InputDecorationTheme(
           hintStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -33,6 +34,15 @@ class MainApp extends StatelessWidget {
             borderRadius: BorderRadius.circular(35),
           ),
         ),
+        textTheme: TextTheme(
+            titleMedium: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+            bodySmall: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color.fromRGBO(0, 0, 0, .55))),
         useMaterial3: true,
       ),
       home: Scaffold(
