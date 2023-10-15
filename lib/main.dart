@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app_flutter/home_page.dart';
+import 'package:shop_app_flutter/my_custom_scroll_behavior.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,6 +12,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       title: 'Shopping App',
       theme: ThemeData(
         fontFamily: 'Lato',

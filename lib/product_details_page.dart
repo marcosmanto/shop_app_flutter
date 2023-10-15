@@ -39,14 +39,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           ),
           //const Spacer(flex: 2),
           Container(
-            height: 250,
+            constraints: BoxConstraints(maxHeight: 200),
             decoration: BoxDecoration(
               color: const Color.fromRGBO(245, 247, 249, 1),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40), topRight: Radius.circular(40)),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   '\$${widget.product['price']}',
