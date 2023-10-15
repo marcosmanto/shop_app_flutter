@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:shop_app_flutter/global_variables.dart';
 import 'package:shop_app_flutter/product_card.dart';
 import 'package:shop_app_flutter/product_details_page.dart';
@@ -103,12 +104,18 @@ class _HomePageState extends State<HomePage> {
                 final product = products[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                          child: ProductDetailsPage(product: product),
+                          type: PageTransitionType.leftToRight),
+                    );
+                    /*Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) =>
                             ProductDetailsPage(product: product),
                       ),
-                    );
+                    );*/
                   },
                   child: ProductCard(
                     title: product['title'] as String,
