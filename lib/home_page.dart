@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app_flutter/global_variables.dart';
 import 'package:shop_app_flutter/product_card.dart';
+import 'package:shop_app_flutter/product_details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,10 +49,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Text(
                         'Collection',
-                        style: TextStyle(
-                            fontSize: 35,
-                            fontWeight: FontWeight.w700,
-                            height: .9),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -103,13 +101,23 @@ class _HomePageState extends State<HomePage> {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
-                return ProductCard(
-                  title: product['title'] as String,
-                  price: double.parse(product['price'].toString()),
-                  image: product['imageUrl'].toString(),
-                  backgroundColor: index.isEven
-                      ? Theme.of(context).colorScheme.secondary
-                      : Color.fromRGBO(245, 247, 249, 1),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailsPage(product: product),
+                      ),
+                    );
+                  },
+                  child: ProductCard(
+                    title: product['title'] as String,
+                    price: double.parse(product['price'].toString()),
+                    image: product['imageUrl'].toString(),
+                    backgroundColor: index.isEven
+                        ? Theme.of(context).colorScheme.secondary
+                        : Color.fromRGBO(245, 247, 249, 1),
+                  ),
                 );
               },
             ))

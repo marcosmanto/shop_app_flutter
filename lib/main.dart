@@ -35,14 +35,28 @@ class MainApp extends StatelessWidget {
           ),
         ),
         textTheme: TextTheme(
-            titleMedium: TextStyle(
+          titleLarge: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.w700,
+            height: .9,
+          ),
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+          bodySmall: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-            bodySmall: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                color: Color.fromRGBO(0, 0, 0, .55))),
+              fontSize: 16,
+              color: Color.fromRGBO(0, 0, 0, .55)),
+        ),
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
         useMaterial3: true,
       ),
       home: Scaffold(
