@@ -21,13 +21,19 @@ class _HomePageState extends State<HomePage> {
         index: currentPage,
         children: pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (value) => setState(() => currentPage = value),
-        currentIndex: currentPage,
-        items: const [
-          BottomNavigationBarItem(label: '', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(label: '', icon: Icon(Icons.shopping_cart)),
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 80,
+        child: BottomNavigationBar(
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
+          iconSize: 35,
+          onTap: (value) => setState(() => currentPage = value),
+          currentIndex: currentPage,
+          items: const [
+            BottomNavigationBarItem(label: '', icon: Icon(Icons.home)),
+            BottomNavigationBarItem(label: '', icon: Icon(Icons.shopping_cart)),
+          ],
+        ),
       ),
     );
   }
