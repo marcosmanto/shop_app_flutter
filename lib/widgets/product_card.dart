@@ -18,6 +18,7 @@ class ProductCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      //constraints: BoxConstraints(maxHeight: 10),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(20),

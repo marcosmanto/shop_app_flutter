@@ -23,12 +23,14 @@ class _ProductListState extends State<ProductList> {
 
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
+    final size = MediaQuery.of(context).size;
+    const border = OutlineInputBorder(
       borderRadius: BorderRadius.horizontal(left: Radius.circular(35)),
       borderSide: BorderSide(
         color: Color.fromRGBO(225, 225, 225, 1),
       ),
     );
+
     return SafeArea(
       child: Column(
         children: [
@@ -94,37 +96,75 @@ class _ProductListState extends State<ProductList> {
               },
             ),
           ),
+          // **** Product list GRID or LIST ****
           Expanded(
-              child: ListView.builder(
-            itemCount: products.length,
-            itemBuilder: (context, index) {
-              final product = products[index];
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    PageTransition(
-                        child: ProductDetailsPage(product: product),
-                        type: PageTransitionType.leftToRight),
-                  );
-                  /*Navigator.of(context).push(
+            child: size.width > 650
+                ? GridView.builder(
+                    itemCount: products.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 2,
+                      crossAxisCount: 2,
+                      mainAxisExtent: 270,
+                    ),
+                    itemBuilder: (context, index) {
+                      final product = products[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                                child: ProductDetailsPage(product: product),
+                                type: PageTransitionType.leftToRight),
+                          );
+                          /*Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) =>
                             ProductDetailsPage(product: product),
                       ),
                     );*/
-                },
-                child: ProductCard(
-                  title: product['title'] as String,
-                  price: double.parse(product['price'].toString()),
-                  image: product['imageUrl'].toString(),
-                  backgroundColor: index.isEven
-                      ? Theme.of(context).colorScheme.secondary
-                      : Color.fromRGBO(245, 247, 249, 1),
-                ),
-              );
-            },
-          ))
+                        },
+                        child: ProductCard(
+                          title: product['title'] as String,
+                          price: double.parse(product['price'].toString()),
+                          image: product['imageUrl'].toString(),
+                          backgroundColor: index.isEven
+                              ? Theme.of(context).colorScheme.secondary
+                              : Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                      );
+                    },
+                  )
+                : ListView.builder(
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      final product = products[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                                child: ProductDetailsPage(product: product),
+                                type: PageTransitionType.leftToRight),
+                          );
+                          /*Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailsPage(product: product),
+                      ),
+                    );*/
+                        },
+                        child: ProductCard(
+                          title: product['title'] as String,
+                          price: double.parse(product['price'].toString()),
+                          image: product['imageUrl'].toString(),
+                          backgroundColor: index.isEven
+                              ? Theme.of(context).colorScheme.secondary
+                              : Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                      );
+                    },
+                  ),
+          ),
         ],
       ),
     );
