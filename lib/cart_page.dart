@@ -16,10 +16,22 @@ class CartPage extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final cartItem = cart[index];
           return ListTile(
-            leading: CircleAvatar(
+            leading: Container(
+              width: 60.0,
+              height: 100.0,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth, // This is the scale you're looking for
+                  image: AssetImage(cartItem['imageUrl'].toString()),
+                ),
+              ),
+            ),
+            /*leading: CircleAvatar(
               radius: 32,
               backgroundImage: AssetImage(cartItem['imageUrl'].toString()),
-            ),
+            ),*/
             trailing: IconButton(
                 onPressed: () {},
                 icon: Icon(
