@@ -7,7 +7,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cart = Provider.of<CartProvider>(context).cart;
+    final cart = Provider.of<CartProvider>(context).cart;
 
     return Scaffold(
       appBar: AppBar(

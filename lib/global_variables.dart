@@ -6,6 +6,7 @@ final products = [
     'imageUrl': 'assets/images/shoes_1.png',
     'company': 'Nike',
     'sizes': [9, 10, 11, 12],
+    'size': 0
   },
   {
     'id': '1',
@@ -14,6 +15,7 @@ final products = [
     'imageUrl': 'assets/images/shoes_2.png',
     'company': 'Adidas',
     'sizes': [9, 10, 12],
+    'size': 0
   },
   {
     'id': '2',
@@ -22,6 +24,7 @@ final products = [
     'imageUrl': 'assets/images/shoes_3.png',
     'company': 'Bata',
     'sizes': [8, 9, 10],
+    'size': 0
   },
   {
     'id': '3',
@@ -30,16 +33,6 @@ final products = [
     'imageUrl': 'assets/images/shoes_4.png',
     'company': 'Nike',
     'sizes': [8, 9, 10],
-  },
-];
-
-final cart = [
-  {
-    'id': '3',
-    'title': 'Jordan Shoes',
-    'price': 420.69,
-    'imageUrl': 'assets/images/shoes_4.png',
-    'company': 'Nike',
-    'size': 8,
+    'size': 0
   },
 ];

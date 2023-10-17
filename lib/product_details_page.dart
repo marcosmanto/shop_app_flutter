@@ -90,8 +90,28 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   child: ElevatedButton.icon(
                     icon: Icon(Icons.shopping_cart_outlined),
                     onPressed: () {
-                      Provider.of<CartProvider>(context, listen: false)
-                          .addProduct(widget.product);
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      if (selectedSize != 0) {
+                        Map<String, Object> productToAdd =
+                            Map.from(widget.product);
+                        productToAdd['size'] = selectedSize;
+                        Provider.of<CartProvider>(context, listen: false)
+                            .addProduct(productToAdd);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.green[300],
+                            content: Text(
+                              'Product added to cart successfully',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )));
+                        return;
+                      }
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Please select a size')));
                     },
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
