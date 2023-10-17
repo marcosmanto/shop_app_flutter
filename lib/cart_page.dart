@@ -7,7 +7,8 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context).cart;
+    //final cart = Provider.of<CartProvider>(context).cart;
+    final cart = context.watch<CartProvider>().cart;
 
     return Scaffold(
       appBar: AppBar(
@@ -68,8 +69,9 @@ class CartPage extends StatelessWidget {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Provider.of<CartProvider>(context,
-                                            listen: false)
+                                    //Provider.of<CartProvider>(context,listen: false).removeProduct(cartItem);
+                                    context
+                                        .read<CartProvider>()
                                         .removeProduct(cartItem);
                                     Navigator.of(context).pop();
                                   },
