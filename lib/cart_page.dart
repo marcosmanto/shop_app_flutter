@@ -43,9 +43,50 @@ class CartPage extends StatelessWidget {
               backgroundImage: AssetImage(cartItem['imageUrl'].toString()),
             ),*/
                   trailing: IconButton(
-                      onPressed: () =>
-                          Provider.of<CartProvider>(context, listen: false)
-                              .removeProduct(cartItem),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text(
+                                'Delete product',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              content: Text(
+                                  'Are you sure you want to remove the product from your cart?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: Navigator.of(context).pop,
+                                  child: Text(
+                                    'No',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Provider.of<CartProvider>(context,
+                                            listen: false)
+                                        .removeProduct(cartItem);
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    'Yes',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
                       icon: Icon(
                         Icons.delete,
                         color: Colors.red,
