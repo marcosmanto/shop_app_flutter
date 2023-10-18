@@ -13,12 +13,12 @@ class ProductList extends StatefulWidget {
 
 class _ProductListState extends State<ProductList> {
   final List<String> filters = const ['All', 'Adidas', 'Nike', 'Bata'];
-  late String selectedFilter;
+  late int selectedFilter;
 
   @override
   void initState() {
     super.initState();
-    selectedFilter = filters.first;
+    selectedFilter = 0;
   }
 
   @override
@@ -78,17 +78,15 @@ class _ProductListState extends State<ProductList> {
               scrollDirection: Axis.horizontal,
               itemCount: filters.length,
               itemBuilder: (context, index) {
-                final filter = filters[index];
-
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: GestureDetector(
-                    onTap: () => setState(() => selectedFilter = filter),
+                    onTap: () => setState(() => selectedFilter = index),
                     child: Chip(
-                      backgroundColor: selectedFilter == filter
+                      backgroundColor: selectedFilter == index
                           ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).chipTheme.backgroundColor,
-                      label: Text(filter, style: TextStyle(height: 1)),
+                      label: Text(filters[index], style: TextStyle(height: 1)),
                     ),
                   ),
                 );
@@ -99,16 +97,22 @@ class _ProductListState extends State<ProductList> {
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) {
+                var filteredProducts = selectedFilter == 0
+                    ? products
+                    : products
+                        .where((element) =>
+                            element['company'] == filters[selectedFilter])
+                        .toList();
                 if (constraints.maxWidth > 650) {
                   return GridView.builder(
-                    itemCount: products.length,
+                    itemCount: filteredProducts.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 2,
                       crossAxisCount: 2,
                       mainAxisExtent: 270,
                     ),
                     itemBuilder: (context, index) {
-                      final product = products[index];
+                      final product = filteredProducts[index];
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -137,9 +141,9 @@ class _ProductListState extends State<ProductList> {
                   );
                 } else {
                   return ListView.builder(
-                    itemCount: products.length,
+                    itemCount: filteredProducts.length,
                     itemBuilder: (context, index) {
-                      final product = products[index];
+                      final product = filteredProducts[index];
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(

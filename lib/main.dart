@@ -13,10 +13,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        return CartProvider();
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) {
+            return CartProvider();
+          },
+        ),
+      ],
       child: MaterialApp(
         scrollBehavior: MyCustomScrollBehavior(),
         title: 'Shopping App',
