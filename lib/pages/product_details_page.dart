@@ -24,7 +24,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         children: [
           FittedBox(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(widget.product['title'] as String,
                   style: Theme.of(context).textTheme.titleLarge),
             ),
@@ -40,9 +40,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           ),
           //const Spacer(flex: 2),
           Container(
-            constraints: BoxConstraints(maxHeight: 200),
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(245, 247, 249, 1),
+            constraints: const BoxConstraints(maxHeight: 200),
+            decoration: const BoxDecoration(
+              color: Color.fromRGBO(245, 247, 249, 1),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40), topRight: Radius.circular(40)),
             ),
@@ -56,7 +56,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 const SizedBox(height: 10),
                 Container(
                   height: 50,
-                  padding: EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: (widget.product['sizes'] as List<int>).length,
@@ -68,9 +68,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         child: InkWell(
                           onTap: () => setState(() => selectedSize = size),
                           child: Chip(
-                            labelPadding: EdgeInsets.symmetric(
+                            labelPadding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 2),
-                            labelStyle: TextStyle(
+                            labelStyle: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.normal,
                             ),
@@ -78,7 +78,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             backgroundColor: selectedSize == size
                                 ? Theme.of(context).colorScheme.primary
                                 : Colors.white,
-                            side: BorderSide(color: Colors.black12),
+                            side: const BorderSide(color: Colors.black12),
                           ),
                         ),
                       );
@@ -88,7 +88,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ElevatedButton.icon(
-                    icon: Icon(Icons.shopping_cart_outlined),
+                    icon: const Icon(Icons.shopping_cart_outlined),
                     onPressed: () {
                       ScaffoldMessenger.of(context).clearSnackBars();
                       if (selectedSize != 0) {
@@ -99,7 +99,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             .addProduct(productToAdd);
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             backgroundColor: Colors.green[300],
-                            content: Text(
+                            content: const Text(
                               'Product added to cart successfully',
                               style: TextStyle(
                                 color: Colors.black87,
@@ -110,15 +110,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         return;
                       }
 
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Please select a size')));
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Please select a size')));
                     },
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         elevation: 0,
                         minimumSize: const Size(double.infinity, 50)),
-                    label: Text('Add To Cart'),
+                    label: const Text('Add To Cart'),
                   ),
                 ),
               ],

@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentPage = 0;
 
-  List<Widget> pages = [ProductList(), CartPage()];
+  List<Widget> pages = [const ProductList(), const CartPage()];
 
   @override
   Widget build(BuildContext context) {

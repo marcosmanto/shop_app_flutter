@@ -53,12 +53,12 @@ class CartPage extends StatelessWidget {
                                 'Delete product',
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
-                              content: Text(
+                              content: const Text(
                                   'Are you sure you want to remove the product from your cart?'),
                               actions: [
                                 TextButton(
                                   onPressed: Navigator.of(context).pop,
-                                  child: Text(
+                                  child: const Text(
                                     'No',
                                     style: TextStyle(
                                       color: Colors.blue,
@@ -75,7 +75,7 @@ class CartPage extends StatelessWidget {
                                         .removeProduct(cartItem);
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Yes',
                                     style: TextStyle(
                                       color: Colors.red,
@@ -89,7 +89,7 @@ class CartPage extends StatelessWidget {
                           },
                         );
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.delete,
                         color: Colors.red,
                       )),

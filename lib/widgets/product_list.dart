@@ -41,7 +41,7 @@ class _ProductListState extends State<ProductList> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Shoes',
                       style: TextStyle(
                           fontSize: 24, fontWeight: FontWeight.w400, height: 1),
@@ -57,7 +57,7 @@ class _ProductListState extends State<ProductList> {
               Expanded(
                 child: TextField(
                   onTapOutside: (e) => FocusScope.of(context).unfocus(),
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Search',
                     prefixIcon: Icon(
                       Icons.search,
@@ -86,7 +86,8 @@ class _ProductListState extends State<ProductList> {
                       backgroundColor: selectedFilter == index
                           ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).chipTheme.backgroundColor,
-                      label: Text(filters[index], style: TextStyle(height: 1)),
+                      label: Text(filters[index],
+                          style: const TextStyle(height: 1)),
                     ),
                   ),
                 );
@@ -106,7 +107,8 @@ class _ProductListState extends State<ProductList> {
                 if (constraints.maxWidth > 650) {
                   return GridView.builder(
                     itemCount: filteredProducts.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       childAspectRatio: 2,
                       crossAxisCount: 2,
                       mainAxisExtent: 270,
@@ -134,7 +136,7 @@ class _ProductListState extends State<ProductList> {
                           image: product['imageUrl'].toString(),
                           backgroundColor: index.isEven
                               ? Theme.of(context).colorScheme.secondary
-                              : Color.fromRGBO(245, 247, 249, 1),
+                              : const Color.fromRGBO(245, 247, 249, 1),
                         ),
                       );
                     },
@@ -165,7 +167,7 @@ class _ProductListState extends State<ProductList> {
                           image: product['imageUrl'].toString(),
                           backgroundColor: index.isEven
                               ? Theme.of(context).colorScheme.secondary
-                              : Color.fromRGBO(245, 247, 249, 1),
+                              : const Color.fromRGBO(245, 247, 249, 1),
                         ),
                       );
                     },
